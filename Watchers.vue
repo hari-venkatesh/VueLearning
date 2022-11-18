@@ -29,3 +29,40 @@ export default {
     }
   }
   
+  <p>
+    Ask a yes/no question:
+    <input v-model="question" />
+  </p>
+  <p>{{ answer }}</p>
+
+  <!-- Deepp Watchers -->
+
+  export default {
+    watch: {
+      someObject: {
+        handler(newValue, oldValue) {
+          // Note: `newValue` will be equal to `oldValue` here
+          // on nested mutations as long as the object itself
+          // hasn't been replaced.
+        },
+        deep: true
+      }
+    }
+  }
+
+  <!-- Eager Watchers -->
+
+  export default {
+    // ...
+    watch: {
+      question: {
+        handler(newQuestion) {
+          // this will be run immediately on component creation.
+        },
+        // force eager callback execution
+        immediate: true
+      }
+    }
+    // ...
+  }
+  
